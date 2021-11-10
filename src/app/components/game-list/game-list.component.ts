@@ -24,7 +24,8 @@ export class GameListComponent implements OnInit {
 
   ngOnInit(): void {
     
-    if (this.route.params ) {
+    if (this.route.params) {
+      
       this.webService.getGames().subscribe((res : any) =>  {
         console.log(res) 
         this.games = res.results
