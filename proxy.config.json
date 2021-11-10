@@ -1,0 +1,6 @@
+{
+    "/api": {
+        "target": "https://api.igdb.com/v4/",
+        "secure": true
+    }
+}

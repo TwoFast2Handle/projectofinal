@@ -1,0 +1,21 @@
+<div class="card mb-3 mt-2" style="height: 300px;" >
+  <img src="{{game.game.background_image}}" width="100px" height="100px" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{game.game.name}}</h5>
+    <p class="card-text">
+      Rating: {{game.game.metacritic}} / 100
+      <br>
+      Price: {{game.game.price}} &#8364;
+    </p>
+   
+    <!-- <a href="javascript: void" [routerLink]="['',game.game.slug]" 
+    class="btn btn-primary align-items-center">Detail</a> -->
+    <button class="btn btn-primary align-items-center"
+     (click)="navigateToDetails()">Detail</button>
+    <button class="btn btn-primary mb-auto">Buy</button>
+    
+    
+  </div>
+</div>
+
+
