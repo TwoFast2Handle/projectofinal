@@ -1,19 +1,19 @@
 <ul class="nav nav-tabs mb-3 mt-3 nav-fill">
     <li class="nav-item">
-        <a class="nav-link" href="#">Store</a>
+        <a class="nav-link" href="">Store</a>
     </li>
     <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Genres</a>
+        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+            aria-expanded="false">Genres</a>
         <ul class="dropdown-menu">
-            
-        <li *ngFor="let genre of genres">
-            <a  class="dropdown-item" [routerLink]="['/genre/',genre.slug]">{{genre.name}}</a></li>
-        
+
+            <li *ngFor="let genre of genres">
+                <a class="dropdown-item" [routerLink]="['/genre/',genre.slug]">{{genre.name}}</a>
+            </li>
+
         </ul>
-      </li>
-    <li class="nav-item">
-        <a class="nav-link" href="#">Search</a>
-      </li>
+    </li>
+
     <li class="nav-item mb-2">
         <a class="nav-link" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                 class="bi bi-cart" viewBox="0 0 16 16">
@@ -22,3 +22,10 @@
             </svg></a>
     </li>
 </ul>
+
+<div class="container">
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Search for a Game here!" aria-label="Recipient's username" aria-describedby="button-addon2">
+        <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search Game</button>
+      </div>
+</div>
