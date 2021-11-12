@@ -42,7 +42,9 @@ export class WebService {
     return this.http.get(this.baseUrl + `genres?` + `key=${this.key}`  )
   }
 
-  
+  getImages(slugOrId: any) {
+    return this.http.get(this.baseUrl +"games/" + slugOrId + `/screenshots?key=${this.key}` )
+  }
 
 }
 

@@ -24,24 +24,19 @@ export class GameListComponent implements OnInit {
 
   ngOnInit(): void {
     
-    if (this.route.params) {
-      
-      this.webService.getGames().subscribe((res : any) =>  {
-        console.log(res) 
-        this.games = res.results
-        this.games.forEach( g => g.price =((Math.floor(Math.random() * (60 - 30) + 30)) - 0.01).toFixed(2))
-        console.log(res.results)
-        
-      })
-    }
 
-    this.webService.getGames().subscribe((res : any) =>  {
-      console.log(res) 
-      this.games = res.results
-      this.games.forEach( g => g.price =((Math.floor(Math.random() * (60 - 30) + 30)) - 0.01).toFixed(2))
-      console.log(res.results)
-      
+    this.route.params.subscribe(
+      ({ genre }) => {        
+        
+        this.webService.getGames(genre).subscribe(
+          (games : any) => {
+            this.games = games.results
+            this.games.forEach( g => g.price =((Math.floor(Math.random() * (60 - 30) + 30)) - 0.01).toFixed(2))
+            console.log(games.results)
+          }
+        )
     })
+    
     
    
     

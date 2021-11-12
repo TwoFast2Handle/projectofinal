@@ -17,12 +17,14 @@ export class DetailComponent implements OnInit {
   
   gameDetails: any
   price: number
+  images: any[]
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private webService: WebService
   ) { 
+    this.images = []
     this.price = this.router.getCurrentNavigation()?.extras.state?.price
   }
 
@@ -30,7 +32,17 @@ export class DetailComponent implements OnInit {
 
     this.route.params.subscribe(
       ({ slug }) => {        
-      
+        
+        this.webService.getImages(slug).subscribe(
+          (images : any) => {
+            this.images = images.results
+            console.log(images.results)
+          }
+
+          
+
+        )
+
         this.webService.getDataById(slug).subscribe(
           (gameDetails: any) => {
             this.gameDetails = gameDetails
