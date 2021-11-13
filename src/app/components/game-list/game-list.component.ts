@@ -25,10 +25,10 @@ export class GameListComponent implements OnInit {
   ngOnInit(): void {
     
 
-    this.route.params.subscribe(
-      ({ genre }) => {        
+    this.route.queryParams.subscribe(
+      ({ search }) => {        
         
-        this.webService.getGames(genre).subscribe(
+        this.webService.getGames(undefined,search).subscribe(
           (games : any) => {
             this.games = games.results
             this.games.forEach( g => g.price =((Math.floor(Math.random() * (60 - 30) + 30)) - 0.01).toFixed(2))
@@ -36,14 +36,5 @@ export class GameListComponent implements OnInit {
           }
         )
     })
-    
-    
-   
-    
   }
-
-  
-
-  
-
 }

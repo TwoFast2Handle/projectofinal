@@ -27,11 +27,20 @@ export class WebService {
 
   
 
-  getGames(genres?:string) {
+  getGames(genres?:string, search?:string) {
+    
+    let url = this.baseUrl +"games?" + `key=${this.key}` +  `&page_size=9`
+
+  
     if (genres) {
-      return this.http.get(this.baseUrl +"games?" + `key=${this.key}` + `&page_size=9` + `&genres=${genres}`)
+      url += `&genres=${genres}`
     }
-    return this.http.get(this.baseUrl +"games?" + `key=${this.key}` + `&page_size=9`)
+
+    if (search) {
+      url += `&search=${search}`
+    }
+
+    return this.http.get(url) 
   }
 
   getDataById(slugOrId : any) {
@@ -45,6 +54,8 @@ export class WebService {
   getImages(slugOrId: any) {
     return this.http.get(this.baseUrl +"games/" + slugOrId + `/screenshots?key=${this.key}` )
   }
+
+
 
 }
 
