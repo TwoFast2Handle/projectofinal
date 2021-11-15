@@ -29,7 +29,7 @@ export class WebService {
 
   getGames(genres?:string, search?:string) {
     
-    let url = this.baseUrl +"games?" + `key=${this.key}` +  `&page_size=9`
+    let url = this.baseUrl +"games?" + `key=${this.key}` +  `&page_size=12`
 
   
     if (genres) {

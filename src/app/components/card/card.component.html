@@ -1,4 +1,4 @@
-<div class="card mb-3 mt-2" style="height: 300px;">
+<div class="card mb-3 mt-2" style="min-height: 30vh; justify-content: center;">
   <img src="{{game.game.background_image}}" width="100px" class="card-img-top" alt="...">
   <div class="card-body">
     <div class="row justify-content-center">
@@ -7,7 +7,7 @@
         <p class="card-text">
           Rating: {{game.game.metacritic}} / 100
           <br>
-          Price: {{game.game.price}} &#8364;
+          Price: {{game.game.price | currency:"EUR"}}
         </p>
       </div>
 

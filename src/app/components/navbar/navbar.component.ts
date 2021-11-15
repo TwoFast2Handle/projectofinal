@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { WebService } from 'src/app/web.service';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'; 
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -13,11 +15,18 @@ export class NavbarComponent implements OnInit {
   genres: any[]
   @Input()
   search: string
+  @Input()
+  category: string
+  faShoppingCart = faShoppingCart
+
 
   constructor(private webService: WebService, private router : Router, private route: ActivatedRoute) { 
 
     this.genres = []
     this.search = ""
+    this.category=""
+    
+
   }
 
   
@@ -33,6 +42,12 @@ export class NavbarComponent implements OnInit {
 
   navigateToSearch() {
     this.router.navigate([""],  { queryParams: { search: this.search }})
+  }
+
+  navigateToCategory() {
+    console.log(this.category)
+    this.router.navigate([""],  { queryParams: { genre: this.category }})
+    
   }
 
 }

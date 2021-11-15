@@ -18,8 +18,7 @@ export class CardComponent {
 
   constructor(private router: Router, private route: ActivatedRoute ) { 
     
-    
-
+  
   }
 
   navigateToDetails() {

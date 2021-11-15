@@ -26,10 +26,11 @@ export class GameListComponent implements OnInit {
     
 
     this.route.queryParams.subscribe(
-      ({ search }) => {        
+      ({ genre,search }) => {        
         
-        this.webService.getGames(undefined,search).subscribe(
+        this.webService.getGames(genre,search).subscribe(
           (games : any) => {
+            console.log(games)
             this.games = games.results
             this.games.forEach( g => g.price =((Math.floor(Math.random() * (60 - 30) + 30)) - 0.01).toFixed(2))
             console.log(games.results)
