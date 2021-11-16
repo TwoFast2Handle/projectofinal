@@ -1,4 +1,15 @@
 
 
-
-<p> {{currentPage}} / {{totalPages}} </p>
+<div class="row justify-content-center">
+    <div class="col-md-2">
+        <button class="btn btn-block btn-secondary" (click)="previousPage()"><fa-icon [icon]="faCaretLeft"></fa-icon></button>
+    </div>
+    <div class="col-md-2 align-items-center">
+        <span class="align-middle" > {{currentPage}} / {{getTotalPages()}} </span>
+    </div>
+    <div class="col-md-2">
+      <button class="btn  btn-block btn-secondary" (click)="nextPage()"><fa-icon [icon]="faCaretRight"></fa-icon></button>  
+    </div>
+    
+ 
+</div>

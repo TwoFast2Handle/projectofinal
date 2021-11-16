@@ -40,14 +40,8 @@ export class NavbarComponent implements OnInit {
       })
   }
 
-  navigateToSearch() {
-    this.router.navigate([""],  { queryParams: { search: this.search }})
-  }
-
-  navigateToCategory() {
-    console.log(this.category)
-    this.router.navigate([""],  { queryParams: { genre: this.category }})
-    
+  filterAction() {
+    this.router.navigate([""],  { queryParams: { search: this.search, genre: this.category }})
   }
 
 }
