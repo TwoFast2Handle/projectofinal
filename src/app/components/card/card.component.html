@@ -5,9 +5,12 @@
       <div class="col-md-12">
         <h5 class="card-title">{{game.game.name}}</h5>
         <p class="card-text">
-          Rating: {{game.game.metacritic}} / 100
+          Metacritic: {{game.game.metacritic}} / 100
           <br>
           Price: {{game.game.price | currency:"EUR"}}
+          <br>
+          Rating: {{game.game.rating}}
+          
         </p>
       </div>
 

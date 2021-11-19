@@ -5,17 +5,17 @@
         <div class="col-md-11">
 
             <div class="input-group input-group-sm mb-3">
-                <input [(ngModel)]="search" type="search" (keyup)="filterAction()" class="form-control"
+                <input [(ngModel)]="search"  name="search" type="search"
+                 class="form-control"
+                 (ngModelChange)="this.searchUpdate.next($event)"
                  placeholder="Search for a Game here!">
     
-                <button class="btn btn-outline-secondary" type="button" (click)="filterAction()"
-                    id="button-addon2">Search
-                    Game</button>
+                
     
                 <select [(ngModel)]="category" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
                     (click)="filterAction()">
-                    <option>
-                        
+                    <option disabled style="color:brown;">
+                        --Categories--
                     </option>
                     <option value="{{genre.slug}}" *ngFor="let genre of genres">
                         {{genre.name}}

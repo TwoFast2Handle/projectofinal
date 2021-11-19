@@ -27,9 +27,9 @@ export class WebService {
 
   
 
-  getGames(genres?:string, search?:string) {
+  getGames(genres?:string, search?:string, page?:number, sort?:string, gamesPerPage?:number, sortUp?: boolean) {
     
-    let url = this.baseUrl +"games?" + `key=${this.key}` +  `&page_size=12`
+    let url = this.baseUrl +"games?" + `key=${this.key}` 
 
   
     if (genres) {
@@ -39,6 +39,28 @@ export class WebService {
     if (search) {
       url += `&search=${search}`
     }
+
+    if (page) {
+      url+= `&page=${page}`
+    }
+
+
+    let sorturl = ''
+    if(sort) {
+      sorturl = sort;
+    }
+    if(!sortUp){
+        sorturl = '-'+sorturl;
+    }
+
+    url+=`&ordering=${sorturl}`
+
+    // url+="&ordering=-metacritic"
+    if (gamesPerPage) {
+      url+= `&page_size=${gamesPerPage}`
+    }
+
+
 
     return this.http.get(url) 
   }
