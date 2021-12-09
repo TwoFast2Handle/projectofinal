@@ -1,7 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CardComponent } from '../card/card.component';
 import { ActivatedRoute, Router } from '@angular/router';
-import { WebService } from 'src/app/web.service';
+import { WebService } from 'src/app/services/web.service';
+import { CartServiceService } from 'src/app/services/cart-service.service';
 
 @Component({
   selector: 'app-detail',
@@ -22,10 +23,12 @@ export class DetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private webService: WebService
+    private webService: WebService, private cartService: CartServiceService
   ) { 
     this.images = []
-    this.price = this.router.getCurrentNavigation()?.extras.state?.price
+    this.price = parseFloat(this.router.getCurrentNavigation()?.extras.state?.price)
+    if(!this.price)
+      this.price = ((Math.floor(Math.random() * (60 - 30) + 30)) - 0.01)
   }
 
   ngOnInit(): void {
@@ -54,6 +57,12 @@ export class DetailComponent implements OnInit {
     
 
     console.log(this.route.params)
+  }
+
+  buy() {
+    this.gameDetails.price = this.price
+    this.cartService.addToCart(this.gameDetails, 1)
+    console.log(this.gameDetails)
   }
 
 }

@@ -1,0 +1,122 @@
+<div class="container d-flex">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="voucher">
+                <br>
+                <b>
+                    <p>Add Voucher Code:</p>
+                </b>
+                <input [(ngModel)]="voucherCode" type="text">
+                <button (click)="voucherInput(voucherCode)">
+                    Submit
+                </button>
+            </div>
+            <br>
+            <table class="table">
+                <thead>
+
+                    <td>
+                        <b>Game</b>
+
+                        <button [ngClass]="{'btn-danger': this.sorter.column == 'name'}" (click)="sort('name')"
+                            class="btn btn-sm btn-secondary">
+                            <fa-icon *ngIf="this.sorter.direction == true && this.sorter.column == 'name'"
+                                [icon]="faArrowUp"></fa-icon>
+                            <fa-icon *ngIf="this.sorter.direction == false && this.sorter.column == 'name'"
+                                [icon]="faArrowDown"></fa-icon>
+                            <fa-icon *ngIf="this.sorter.column != 'name'" [icon]="faGripLines"></fa-icon>
+                        </button>
+
+                    </td>
+
+                    <td>
+                        <b>Quantity</b>
+
+                        <button [ngClass]="{'btn-danger': this.sorter.column == 'quantity'}"
+                            class="btn btn-sm btn-secondary" (click)="sort('quantity')">
+                            <fa-icon
+                                *ngIf="(this.sorter.direction == true && this.sorter.column == 'quantity') || this.sorter.column ==''"
+                                [icon]="faArrowUp">
+                            </fa-icon>
+
+                            <fa-icon
+                                *ngIf="(this.sorter.direction == false && this.sorter.column == 'quantity') || this.sorter.column ==''"
+                                [icon]="faArrowDown">
+                            </fa-icon>
+
+                            <fa-icon *ngIf="this.sorter.column != 'quantity'" [icon]="faGripLines">
+                            </fa-icon>
+                        </button>
+
+                    </td>
+
+                    <td>
+                        <b>Price</b>
+
+                        <button [ngClass]="{'btn-danger': this.sorter.column == 'price'}"
+                            class="btn btn-sm btn-secondary" (click)="sort('price')">
+                            <fa-icon *ngIf="this.sorter.direction == true && this.sorter.column == 'price'"
+                                [icon]="faArrowUp">
+                            </fa-icon>
+
+                            <fa-icon *ngIf="this.sorter.direction == false && this.sorter.column == 'price'"
+                                [icon]="faArrowDown">
+                            </fa-icon>
+
+                            <fa-icon *ngIf="this.sorter.column != 'price'" [icon]="faGripLines">
+                            </fa-icon>
+
+                        </button>
+
+
+
+                    </td>
+                </thead>
+
+                <tr *ngFor="let item of this.cartService.cart.items">
+                    <td>
+                        {{item.game.name}}
+                    </td>
+
+                    <td>
+
+                        <button class="btn btn-secondary" (click)="addToQuantity(item.game)">
+                            <fa-icon [icon]="faArrowUp"></fa-icon>
+                        </button>
+
+                        <span class="text-right">{{item.quantity}}</span>
+
+                        <button class="btn btn-secondary" (click)="removeFromQuantity(item)">
+                            <fa-icon [icon]="faArrowDown"></fa-icon>
+                        </button>
+
+                    </td>
+
+                    <td>
+                        {{item.game.price | currency: "EUR"}}
+                    </td>
+
+                </tr>
+            </table>
+
+            <h2>Total: {{this.cartService.cart.totalPrice | currency: "EUR"}} <span
+                    *ngIf="this.cartService.cart.discount">(Added Discount of {{this.cartService.cart.discount * 100}}%)
+                    <button class="btn btn-warning" (click)="removeDiscount()">X</button></span></h2>
+
+        </div>
+
+
+
+        <div class="col-md-12">
+
+            <div class="align-items-center">
+                <a [routerLink]="['']" class="btn btn-primary mx-2">Go Back</a>
+                <button class="btn btn-secondary" (click)="navigateToCheckout()">Checkout</button>
+            </div>
+
+            
+        </div>
+
+    </div>
+
+</div>

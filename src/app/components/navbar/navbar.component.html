@@ -1,17 +1,14 @@
-
 <div class="container">
     <div class="row">
 
-        <div class="col-md-11">
+        <div class="col-md-9">
 
             <div class="input-group input-group-sm mb-3">
-                <input [(ngModel)]="search"  name="search" type="search"
-                 class="form-control"
-                 (ngModelChange)="this.searchUpdate.next($event)"
-                 placeholder="Search for a Game here!">
-    
-                
-    
+                <input [(ngModel)]="search" name="search" type="search" class="form-control"
+                    (ngModelChange)="this.searchUpdate.next($event)" placeholder="Search for a Game here!">
+
+
+
                 <select [(ngModel)]="category" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
                     (click)="filterAction()">
                     <option disabled style="color:brown;">
@@ -21,19 +18,22 @@
                         {{genre.name}}
                     </option>
                 </select>
-    
-    
+
+
             </div>
         </div>
-
-        <div class="col-md-1">
-            <button type="button" class="btn btn-sm btn-secondary cart">
-            
-                <fa-icon [icon]="faShoppingCart"></fa-icon>
-            
-        </button>
+        <div class="col-md-3">
+            <div class="d-grid gap-2 d-md-block">
+                        <button type="button" class="btn btn-sm btn-block btn-secondary cart" (click)="navigateToCart()">
+                            <fa-icon [icon]="faShoppingCart"></fa-icon>
+                        </button>
+                        <button *ngIf ="!this.loggedUser" class="btn btn-sm btn-secondary mx-1" (click)="navigateToLogin()">Login</button>
+                        <button *ngIf ="this.loggedUser" class="btn btn-sm btn-secondary mx-1" (click)="navigateToProfile()"><fa-icon [icon]="faUser"></fa-icon></button>
+        </div>
         </div>
         
+        
+
     </div>
 
 </div>

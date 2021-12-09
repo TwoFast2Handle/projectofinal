@@ -34,15 +34,15 @@
 
     <div class="container">
         <p>Check out other games in the same genres:</p>
-        <a [routerLink]="['/genre/', genre.slug]" *ngFor="let genre of gameDetails.genres" class="btn btn-info m-2">{{genre.name}}</a>
+        <a [routerLink]="['/genre/', genre.slug]" *ngFor="let genre of gameDetails.genres" class="btn btn-dark m-2">{{genre.name}}</a>
     </div>
 
     <br>
 
     <div class="container d-flex">
         <div class="align-items-center">
-            <a [routerLink]="['']" class="btn btn-primary">Go Back</a>
-            <button class="btn btn-primary">Add to cart for {{price}} &#8364;</button>
+            <a [routerLink]="['']" class="btn btn-secondary">Go Back</a>
+            <button class="btn btn-secondary" (click)="buy()">Add to cart for {{price | currency: "EUR"}}</button>
         </div>
     </div>
 

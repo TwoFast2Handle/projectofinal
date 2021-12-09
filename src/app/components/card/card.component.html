@@ -7,19 +7,19 @@
         <p class="card-text">
           Metacritic: {{game.game.metacritic}} / 100
           <br>
-          Price: {{game.game.price | currency:"EUR"}}
-          <br>
           Rating: {{game.game.rating}}
+          <br>
+          Price: {{game.game.price | currency:"EUR"}}
           
         </p>
       </div>
 
       <div class="col-md-6">
-        <button class="btn btn-primary btn-block align-bottom" (click)="navigateToDetails()">Detail</button>
+        <button class="btn btn-secondary btn-block align-bottom" (click)="navigateToDetails()">Detail</button>
       </div>
 
       <div class="col-md-6">
-        <button class="btn btn-primary btn-block mb-auto bu2">Buy</button>
+        <button class="btn btn-secondary btn-block mb-auto bu2" (click)="buy()">Buy</button>
       </div>
 
 

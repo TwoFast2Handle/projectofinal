@@ -3,7 +3,7 @@
 
 
 <div class="container">
-  <select [(ngModel)]="sort" (click)="filterAction()" class="m-1" aria-label="Default select example">
+  <select [(ngModel)]="filter.sort" (click)="filterAction()" class="m-1" aria-label="Default select example">
   <option selected>Sort by:</option>
   <option value="name">Name Ascending</option>
   <!-- <option value="-name">Name Descending</option> -->
@@ -21,13 +21,13 @@
   <!-- <option value="-metacritic">Metacritic Descending</option> -->
   </select>
 
-  <button class="btn btn-sm btn-secondary" (click)="sortUpDown()">
-    <fa-icon *ngIf="ascDesc" [icon]="faArrowDown"></fa-icon>
-    <fa-icon *ngIf="!ascDesc" [icon]="faArrowUp"></fa-icon>
+  <button class="btn btn-sm btn-secondary sorter" (click)="sortUpDown()">
+    <fa-icon *ngIf="filter.ascDesc" [icon]="faArrowDown"></fa-icon>
+    <fa-icon *ngIf="!filter.ascDesc" [icon]="faArrowUp"></fa-icon>
   </button>
 
 
-  <select [(ngModel)]="gamesPerPage" (click)="filterAction()" class="m-1" aria-label="Default select example">
+  <select [(ngModel)]="filter.itemsPerPage" (click)="filterAction()" class="m-1" aria-label="Default select example">
     <option selected>Page Size:</option>
     <option value="12">12</option>
     <option value="15">15</option>
@@ -47,7 +47,7 @@
   </div>
   <div class="row">
     
-      <app-paginator [search]="search" [genre]="genre" [totalCount]="numberRecords" class="text-center"></app-paginator>
+      <app-paginator [search]="filter.search" [genre]="filter.genre" [totalCount]="numberRecords" class="text-center"></app-paginator>
     
     
   </div>

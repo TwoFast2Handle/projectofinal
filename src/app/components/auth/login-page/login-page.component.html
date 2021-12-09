@@ -1,0 +1,37 @@
+<div class="container d-flex justify-content-center">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-signin">
+    <form class="mt-5" [formGroup]="form">
+        
+      <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+      <div *ngIf="this.errorMessage" class="alert alert-danger mt-3" role="alert">
+        {{this.errorMessage}} - Please Contact Administrator
+     </div>
+  
+      <div class="form-floating">
+        <input type="email" class="form-control mb-3" id="floatingInput" placeholder="name@example.com" formControlName="email" >
+        <label for="floatingInput">Email address</label>
+      </div>
+      <div class="form-floating">
+        <input type="password" class="form-control mb-2" id="floatingPassword" placeholder="Password" formControlName="password" >
+        <label for="floatingPassword">Password</label>
+      </div>
+  
+      <div class="checkbox mb-3">
+        <label>
+          <input type="checkbox" value="remember-me"> Remember me
+        </label>
+      </div>
+      <button class="w-100 btn btn-lg btn-primary" (click)="login()" type="submit">Sign in</button>
+      
+      <p class="mt-5 mb-3 text-muted">© 2017–2021</p>
+
+    </form>
+  </div>
+      </div>
+      
+    </div>
+    
+  </div>
+  

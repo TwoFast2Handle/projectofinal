@@ -1,0 +1,123 @@
+<div class="container">
+    <h1>Please fill up the form:</h1>
+    <form [formGroup]="form" class="py-5" (submit)="save()">
+        <div class="row">
+
+            <div class="col-md-6">
+                <div class="form-Group">
+                    <label for="nameInput">First Name:</label>
+                    
+                    <input id="nameInput" class="form-control" formControlName="name" type="text"
+                        [class.is-invalid]="form.get('name')?.touched && form.get('name')?.errors">
+                    
+                        <div *ngIf="form.get('name')?.touched && form.get('name')?.hasError('required')"
+                        class="form-text text-danger">Name is required</div>
+                    
+                        <div *ngIf="form.get('name')?.touched && form.get('name')?.hasError('minlength')"
+                        class="form-text text-danger">Name min length is {{
+                        form.get('name')?.errors?.minlength.requiredLength}}
+                    </div>
+                    
+                    <div *ngIf="form.get('name')?.touched && form.get('name')?.hasError('pattern')"
+                        class="form-text text-danger">Name must not have numbers or special characters.
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-Group">
+                    <label for="lastInput">Last Name:</label>
+                    <input id="lastInput" class="form-control" formControlName="lastName" type="text"
+                        [class.is-invalid]="form.get('lastName')?.touched && form.get('name')?.errors">
+                    <div *ngIf="form.get('lastName')?.touched && form.get('lastName')?.hasError('required')"
+                        class="form-text text-danger">Name is required</div>
+                    <div *ngIf="form.get('lastName')?.touched && form.get('lastName')?.hasError('minlength')"
+                        class="form-text text-danger">Name min length is {{
+                        form.get('lastName')?.errors?.minlength.requiredLength}}
+                    </div>
+                    <div *ngIf="form.get('lastName')?.touched && form.get('lastName')?.hasError('pattern')"
+                        class="form-text text-danger">Name must not have numbers or special characters.
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="form-Group">
+                    <label for="adress">Adress:</label>
+                    <input id="adress" class="form-control" formControlName="adress" type="text"
+                    [class.is-invalid]="form.get('adress')?.touched && form.get('adress')?.errors">
+                    <div *ngIf="form.get('adress')?.touched && form.get('adress')?.hasError('required')"
+                        class="form-text text-danger">Adress is Required
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="form-Group">
+                    <label for="adressOptional">Adress (optional):</label>
+                    <input id="adressOptional" class="form-control" formControlName="adressOptional" type="text"
+                        placeholder="floor, building number...">
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-Group">
+                    <label for="Country">Country:</label>
+                    <select class="form-control form-select" id="country" formControlName="country"
+                    [class.is-invalid]="form.get('country')?.touched && form.get('country')?.errors">
+                        <option value="">Select your Country</option>
+                        <option *ngFor="let country of this.countries">{{country}}</option>
+                    </select>
+                    <div *ngIf="form.get('country')?.touched && form.get('country')?.hasError('required')"
+                        class="form-text text-danger">Please select a Country
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-Group">
+                    <label for="city">City:</label>
+                    <input id="city" class="form-control" formControlName="city" type="text"
+                    [class.is-invalid]="form.get('city')?.touched && form.get('city')?.errors">
+                    <div *ngIf="form.get('city')?.touched && form.get('city')?.hasError('required')"
+                        class="form-text text-danger">Please input a city
+                    </div>
+                    <div *ngIf="form.get('city')?.touched && form.get('city')?.hasError('minLength')"
+                        class="form-text text-danger">Minimum length is 2 characters
+                    </div>
+                    <div *ngIf="form.get('city')?.touched && form.get('city')?.hasError('pattern')"
+                        class="form-text text-danger">City must not have numbers or special characters.
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-Group">
+                    <label for="post">Postal Code:</label>
+                    <input id="post" class="form-control" formControlName="post" type="text" placeholder="1234-123"
+                    [class.is-invalid]="form.get('post')?.touched && form.get('post')?.errors">
+                    <div *ngIf="form.get('post')?.touched && form.get('post')?.hasError('pattern')"
+                        class="form-text text-danger">Please follow the pattern of XXXX - XXX
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 my-4">
+                <button class="btn btn-secondary mx-2">
+                    Go Back
+                </button>
+                <input type="submit" [disabled]="!form.valid" class="btn btn-secondary">
+                   
+            
+            </div>
+
+        </div>
+    </form>
+
+
+
+
+</div>
