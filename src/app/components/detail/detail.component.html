@@ -1,0 +1,51 @@
+<div *ngIf="gameDetails" class="container">
+
+    <div class="row title mt-5 pt-3">
+        <h1 class="d-flex justify-content-center">{{gameDetails.name}}</h1>
+    </div>
+
+    <div class="row p-3">
+        <img class="col-6" src="{{gameDetails.background_image}}" width="400px" alt="">
+        <img class="col-6" src="{{gameDetails.background_image_additional}}" width="400px" width="600px" alt="">
+    </div>
+
+    <div class="row">
+        <div class="col-12 m-3">
+            <p>{{gameDetails.description_raw}}</p>
+        </div>
+    </div>
+    <div *ngIf="images" class="row">
+        <div *ngFor="let image of images"  class="col-6 mt-2">
+            <div  class="d-flex justify-content-center">
+                <img src="{{image.image}}" alt="" class="img-fluid">
+            </div>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-8">
+
+            <p> Release Date: {{gameDetails.released}}</p>
+            <p>Official Website: <a href="{{gameDetails.website}}">{{gameDetails.website}}</a></p>
+        </div>
+    </div>
+
+        
+
+
+    <div class="container">
+        <p>Check out other games in the same genres:</p>
+        <a [routerLink]="['/genre/', genre.slug]" *ngFor="let genre of gameDetails.genres" class="btn btn-dark m-2">{{genre.name}}</a>
+    </div>
+
+    <br>
+
+    <div class="container d-flex">
+        <div class="align-items-center">
+            <a [routerLink]="['']" class="btn btn-secondary">Go Back</a>
+            <button class="btn btn-secondary" (click)="buy()">Add to cart for {{price | currency: "EUR"}}</button>
+        </div>
+    </div>
+
+
+
+</div>

@@ -1,0 +1,32 @@
+<div class="card mb-3 mt-2" style="min-height: 30vh; justify-content: center;">
+  <img src="{{game.game.background_image}}" width="100px" class="card-img-top" alt="...">
+  <div class="card-body">
+    <div class="row justify-content-center">
+      <div class="col-md-12">
+        <h5 class="card-title">{{game.game.name}}</h5>
+        <p class="card-text">
+          Metacritic: {{game.game.metacritic}} / 100
+          <br>
+          Rating: {{game.game.rating}}
+          <br>
+          Price: {{game.game.price | currency:"EUR"}}
+          
+        </p>
+      </div>
+
+      <div class="col-md-6">
+        <button class="btn btn-secondary btn-block align-bottom" (click)="navigateToDetails()">Detail</button>
+      </div>
+
+      <div class="col-md-6">
+        <button class="btn btn-secondary btn-block mb-auto bu2" (click)="buy()">Buy</button>
+      </div>
+
+
+
+    </div>
+
+
+
+  </div>
+</div>

@@ -1,0 +1,55 @@
+
+<!--*ngFor="let game of games; index as i"-->
+
+
+<div class="container">
+  <select [(ngModel)]="filter.sort" (click)="filterAction()" class="m-1" aria-label="Default select example">
+  <option selected>Sort by:</option>
+  <option value="name">Name Ascending</option>
+  <!-- <option value="-name">Name Descending</option> -->
+  <option value="released">Release Date Ascending</option>
+  <!-- <option value="-released">Release Date Descending</option> -->
+  <option value="added">Added Ascending</option>
+  <!-- <option value="-added">Added Descending</option> -->
+  <option value="created">Created Ascending</option>
+  <!-- <option value="-created">Created Descending</option> -->
+  <option value="updated">Updated Ascending</option>
+  <!-- <option value="-updated">Updated Descending</option> -->
+  <option value="rating">Rating Ascending</option>
+  <!-- <option value="-rating">Rating Descending</option> -->
+  <option value="metacritic">Metacritic Ascending</option>
+  <!-- <option value="-metacritic">Metacritic Descending</option> -->
+  </select>
+
+  <button class="btn btn-sm btn-secondary sorter" (click)="sortUpDown()">
+    <fa-icon *ngIf="filter.ascDesc" [icon]="faArrowDown"></fa-icon>
+    <fa-icon *ngIf="!filter.ascDesc" [icon]="faArrowUp"></fa-icon>
+  </button>
+
+
+  <select [(ngModel)]="filter.itemsPerPage" (click)="filterAction()" class="m-1" aria-label="Default select example">
+    <option selected>Page Size:</option>
+    <option value="12">12</option>
+    <option value="15">15</option>
+    <option value="18">18</option>
+    <option value="21">21</option>
+    <option value="24">24</option>
+    <option value="42">42</option>
+    
+    </select>
+
+  <div class="row d-flex  justify-content-center align-items-center">
+    <div class="col-md-12 loader align-middle" *ngIf="isLoading"><img  src="https://c.tenor.com/I6kN-6X7nhAAAAAj/loading-buffering.gif" alt=""></div>
+    
+    
+    <app-card class="col-md-4" *ngFor="let game of games"
+    [game]={game}></app-card>
+  </div>
+  <div class="row">
+    
+      <app-paginator [search]="filter.search" [genre]="filter.genre" [totalCount]="numberRecords" class="text-center"></app-paginator>
+    
+    
+  </div>
+  
+</div>
