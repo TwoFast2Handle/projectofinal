@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { LoginService } from 'src/app/services/login.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ThisReceiver } from '@angular/compiler';
 
 @Component({
   selector: 'app-login-page',
@@ -37,6 +38,10 @@ export class LoginPageComponent implements OnInit {
         this.errorMessage = "Login Failed"
       }
     })
+  }
+
+  register() {
+    
   }
 
 }

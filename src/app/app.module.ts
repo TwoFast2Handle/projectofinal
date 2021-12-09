@@ -22,6 +22,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { ProfileComponent } from './components/auth/profile/profile.component';
 
 
+
 const firebaseConfig = {
   apiKey: "AIzaSyDcv2fCqxsVr-70GD-XrnfkZV-LPIpNG9I",
   authDomain: "store-7deb3.firebaseapp.com",
@@ -45,6 +46,7 @@ const firebaseConfig = {
     CheckoutComponent,
     LoginPageComponent,
     ProfileComponent,
+    
     
   ],
   imports: [

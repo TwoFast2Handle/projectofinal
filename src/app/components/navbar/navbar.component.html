@@ -24,15 +24,24 @@
         </div>
         <div class="col-md-3">
             <div class="d-grid gap-2 d-md-block">
-                        <button type="button" class="btn btn-sm btn-block btn-secondary cart" (click)="navigateToCart()">
-                            <fa-icon [icon]="faShoppingCart"></fa-icon>
-                        </button>
-                        <button *ngIf ="!this.loggedUser" class="btn btn-sm btn-secondary mx-1" (click)="navigateToLogin()">Login</button>
-                        <button *ngIf ="this.loggedUser" class="btn btn-sm btn-secondary mx-1" (click)="navigateToProfile()"><fa-icon [icon]="faUser"></fa-icon></button>
+                <div class="btn-group btn-group-sm" role="group">
+                    <button type="button" class="btn btn-sm btn-block btn-secondary cart" (click)="navigateToCart()">
+                        <fa-icon [icon]="faShoppingCart"></fa-icon>
+                    </button>
+                    <button *ngIf="this.loggedUser" class="btn btn-sm btn-secondary" (click)="navigateToProfile()">
+                        <fa-icon [icon]="faUser"></fa-icon>
+                    </button>
+                    <button *ngIf="this.loggedUser" class="btn btn-sm btn-secondary" (click)="logout()">Log
+                        Out</button>
+                </div>
+
+                <button *ngIf="!this.loggedUser" class="btn btn-sm btn-secondary mx-1"
+                    (click)="navigateToLogin()">Login</button>
+
+            </div>
         </div>
-        </div>
-        
-        
+
+
 
     </div>
 

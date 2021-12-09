@@ -57,11 +57,9 @@ export class NavbarComponent implements OnInit {
         //console.log(this.genres)
       })
 
-      console.log(this.LoginService.getUserLogged().subscribe( res => {
+      this.LoginService.getUserLogged().subscribe( res => {
         this.loggedUser = res
-
-
-      }))
+      })
 
   }
 
@@ -79,7 +77,10 @@ export class NavbarComponent implements OnInit {
 
   navigateToProfile() {
     this.router.navigate(["profile"])
-    this.LoginService.getUserLogged().subscribe( res => console.log(res))
+    //this.LoginService.getUserLogged().subscribe( res => console.log(res))
   }
 
+  logout() {
+    this.LoginService.logout()
+  }
 }

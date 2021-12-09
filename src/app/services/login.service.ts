@@ -42,6 +42,11 @@ export class LoginService {
     return this.afauth.authState
   }
 
+  getLogged() {
+    return this.afauth.authState.toPromise()
+
+  }
+
   logout() {
     this.afauth.signOut()
   }
