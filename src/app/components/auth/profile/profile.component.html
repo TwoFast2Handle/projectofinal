@@ -1,18 +1,19 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-5">
             <div class="card" >
                 <img src="" class="card-img-top" alt="...">
                 <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                  <h5 class="card-title">Name</h5>
+                  
+                  <input type="file">
+                  <p>Change Profile Picture</p>
                 </div>
               </div>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-7">
             <div class="card" >
-                <img src="" class="card-img-top" alt="...">
+                
                 <div class="card-body">
                   <h5 class="card-title">Profile Details</h5>
                   <form action="" [formGroup]="form">
@@ -29,11 +30,12 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="lastName" class="mx-2">Last Name</label>
-                                <input type="text" formControlName="lastName">
+                                <input  type="text" formControlName="lastName">
                             </div>
                         </div>
-
-                            <div class="col-md-4">
+                        </div>   
+                        <div class="row">
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="adress" class="mx-2">Adress</label>
                                     <input type="text" formControlName="adress">
@@ -46,6 +48,7 @@
                                     <input type="text" formControlName="adressOptional">
                                 </div>
                             </div>
+                        </div> 
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="country" class="mx-2">Country</label>
@@ -64,10 +67,12 @@
                                     <input type="text" formControlName="post">
                                 </div>
                             </div>
+                            <br>
+                            <button class="btn btn-secondary">Save</button>
                         
-                    </div>
+                    
                   </form>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  
                   
                 </div>
               </div>

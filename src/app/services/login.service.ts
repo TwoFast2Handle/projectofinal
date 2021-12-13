@@ -51,4 +51,15 @@ export class LoginService {
     this.afauth.signOut()
   }
 
+  getCurrentUser() {
+    const user = firebase.auth().currentUser
+    
+    if (user) {
+      return true
+    } else {
+      return false
+    }
+    
+  }
+
 }
