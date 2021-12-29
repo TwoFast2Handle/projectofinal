@@ -1,6 +1,6 @@
 <div class="container">
     <h1>Please fill up the form:</h1>
-    <form [formGroup]="form" class="py-5" (submit)="send()">
+    <form [formGroup]="form" class="py-5" (submit)="confirmAndPay()">
         <div class="row">
             
             <div class="col-md-12">
@@ -32,7 +32,7 @@
                         class="form-text text-danger">Card Number is required</div>
                     <div *ngIf="form.get('cardNumber')?.touched && form.get('cardNumber')?.hasError('minlength')"
                         class="form-text text-danger">Card Number Minimum length is {{
-                        form.get('lastName')?.errors?.minlength.requiredLength}}
+                        form.get('cardNumber')?.errors?.minlength.requiredLength}}
                     </div>
                 </div>
             </div>
@@ -44,6 +44,10 @@
                     [class.is-invalid]="form.get('securityCode')?.touched && form.get('securityCode')?.errors">
                     <div *ngIf="form.get('securityCode')?.touched && form.get('securityCode')?.hasError('required')"
                         class="form-text text-danger">Security Code is Required
+                    </div>
+                    <div *ngIf="form.get('securityCode')?.touched && form.get('securityCode')?.hasError('minlength')"
+                        class="form-text text-danger">Security Code Minimum length is {{
+                            form.get('securityCode')?.errors?.minlength.requiredLength}}
                     </div>
                 </div>
             </div>
@@ -63,7 +67,7 @@
 
         <div class="row">
             <div class="col-md-12 my-4">
-                <button class="btn btn-secondary mx-2">
+                <button class="btn btn-secondary mx-2" [routerLink]="['/checkout']">
                     Go Back
                 </button>
                 <input type="submit" [disabled]="!form.valid" value="Confirm and Pay" class="btn btn-secondary">

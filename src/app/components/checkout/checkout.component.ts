@@ -62,10 +62,12 @@ export class CheckoutComponent implements OnInit {
   send() {
     let cart = this.cartService.getCart()
     cart.adressInfo = this.form.value
+    this.cartService.setCart(cart)
+    console.log(cart)
     this.router.navigate(["payment"])
   }
 
-  navigateToPayment() {
-    
+  navigateToHome() {
+    this.router.navigate([""])
   }
 }

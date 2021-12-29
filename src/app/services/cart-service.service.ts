@@ -25,6 +25,12 @@ export class CartServiceService {
       return this.cart
   }
 
+  public setCart(cart : Cart){
+    this.cart = cart;
+    localStorage.setItem("Cart", JSON.stringify(cart));
+    
+}
+
   addToCart(game: any, quantity: number) {
 
     let item = new CardItem(game, quantity)
