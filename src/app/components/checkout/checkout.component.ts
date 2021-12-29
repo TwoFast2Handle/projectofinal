@@ -67,7 +67,4 @@ export class CheckoutComponent implements OnInit {
     this.router.navigate(["payment"])
   }
 
-  navigateToHome() {
-    this.router.navigate([""])
-  }
 }
