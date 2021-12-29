@@ -1,0 +1,80 @@
+<div class="container">
+    <h1>Please fill up the form:</h1>
+    <form [formGroup]="form" class="py-5" (submit)="send()">
+        <div class="row">
+            
+            <div class="col-md-12">
+                <div class="form-Group">
+                    <label for="nameInput">Name on Card:</label>
+                    
+                    <input id="nameInput" class="form-control" formControlName="cardName" type="text"
+                        [class.is-invalid]="form.get('cardName')?.touched && form.get('cardName')?.errors">
+                    
+                        <div *ngIf="form.get('cardName')?.touched && form.get('cardName')?.hasError('required')"
+                        class="form-text text-danger">Name is required</div>
+                    
+                        <div *ngIf="form.get('cardName')?.touched && form.get('cardName')?.hasError('minlength')"
+                        class="form-text text-danger">Name min length is {{
+                        form.get('name')?.errors?.minlength.requiredLength}}
+                    </div>
+                    
+                    <div *ngIf="form.get('name')?.touched && form.get('name')?.hasError('pattern')"
+                        class="form-text text-danger">Name must not have numbers or special characters.
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-Group">
+                    <label for="cardNumber">Card Number:</label>
+                    <input id="cardNumber" class="form-control" formControlName="cardNumber" type="text"
+                        [class.is-invalid]="form.get('cardNumber')?.touched && form.get('cardNumber')?.errors">
+                    <div *ngIf="form.get('cardNumber')?.touched && form.get('cardNumber')?.hasError('required')"
+                        class="form-text text-danger">Card Number is required</div>
+                    <div *ngIf="form.get('cardNumber')?.touched && form.get('cardNumber')?.hasError('minlength')"
+                        class="form-text text-danger">Card Number Minimum length is {{
+                        form.get('lastName')?.errors?.minlength.requiredLength}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="form-Group">
+                    <label for="securityCode">Security Code:</label>
+                    <input id="securityCode" class="form-control" formControlName="securityCode" type="text"
+                    [class.is-invalid]="form.get('securityCode')?.touched && form.get('securityCode')?.errors">
+                    <div *ngIf="form.get('securityCode')?.touched && form.get('securityCode')?.hasError('required')"
+                        class="form-text text-danger">Security Code is Required
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-Group">
+                    <label for="expirationDate">Expiration Date:</label>
+                    <input id="expirationDate" class="form-control" formControlName="expirationDate" type="text" placeholder="01/12"
+                    [class.is-invalid]="form.get('expirationDate')?.touched && form.get('expirationDate')?.errors">
+                    <div *ngIf="form.get('expirationDate')?.touched && form.get('expirationDate')?.hasError('pattern')"
+                        class="form-text text-danger">Please follow the pattern of XX / XX
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 my-4">
+                <button class="btn btn-secondary mx-2">
+                    Go Back
+                </button>
+                <input type="submit" [disabled]="!form.valid" value="Confirm and Pay" class="btn btn-secondary">
+                   
+            
+            </div>
+
+        </div>
+    </form>
+
+
+
+
+</div>

@@ -29,19 +29,19 @@ export class LoginPageComponent implements OnInit {
 
   login() {
     const {email, password} = this.form.value
-    this.LoginService.login(email, password).then( res => {
-      console.log(res)
-      if(res != null){
-        //navigate to check
-        this.router.navigate([""])
-      } else {
-        this.errorMessage = "Login Failed"
-      }
+    this.LoginService.login(email, password).then(res =>{
+        if (res == true) {
+          this.router.navigate([""])
+        } else {
+          this.errorMessage = "Login failed"
+        }
+        
+     
     })
   }
 
   register() {
-    
+    this.router.navigate(["register"])
   }
 
 }

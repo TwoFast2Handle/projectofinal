@@ -72,9 +72,6 @@ export class CartComponent implements OnInit {
     this.sorter.direction = !this.sorter.direction
 
     console.log(this.sorter.direction)
-
-
-
     this.cartService.cart.items = this.cartService.cart.items.sort((a: CardItem, b: CardItem): any => {
 
       if (this.sorter.direction == true) {

@@ -25,18 +25,19 @@ export class AuthGuard implements CanActivate {
   canActivate() : boolean {
 
     console.log('canActivate call');
-    console.log(this.LoginService.getCurrentUser)
+    //console.log(this.LoginService.getCurrentUser())
     
-    return this.LoginService.getCurrentUser()
-    // if(user){
-    //   console.log('estou logado');
-    //   return true
-    // } else {
-    //   console.log('nao estou logado');
-    //   this.router.navigate(["login"])
-    //   return false
+    // return this.LoginService.getCurrentUser()
+    
+    if(localStorage.getItem("refreshToken")){
+      console.log('estou logado');
+      return true
+    } else {
+      console.log('nao estou logado');
+      this.router.navigate(["login"])
+      return false
       
-    // }
+    }
     
   }
 }

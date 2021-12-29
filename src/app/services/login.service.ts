@@ -20,7 +20,19 @@ export class LoginService {
     }
   }
 
-  async login(email: string, password: string) {
+  login(email : string, password: string) {
+    return this.internalLogin(email,password).then( res => {
+      console.log(res)
+      if(res != null){
+        localStorage.setItem('refreshToken', JSON.stringify(res.user?.refreshToken))
+        return true
+      } 
+      return false
+      
+    })
+  }
+
+  async internalLogin(email: string, password: string) {
     try {
       return await this.afauth.signInWithEmailAndPassword(email, password)
     } catch (err) {
@@ -48,12 +60,15 @@ export class LoginService {
   }
 
   logout() {
+    
     this.afauth.signOut()
+    localStorage.removeItem("refreshToken")
   }
 
   getCurrentUser() {
+    console.log("call getcurrentuser", firebase)
     const user = firebase.auth().currentUser
-    
+    console.log(user)
     if (user) {
       return true
     } else {

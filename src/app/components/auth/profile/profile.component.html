@@ -2,12 +2,13 @@
     <div class="row">
         <div class="col-md-5">
             <div class="card" >
-                <img src="" class="card-img-top" alt="...">
+                <img style="background: white;" [src]="fileInput" class="card-img-top" alt="...">
                 <div class="card-body">
-                  <h5 class="card-title">Name</h5>
+                  <h5 class="card-title">{{this.name}}</h5>
                   
-                  <input type="file">
-                  <p>Change Profile Picture</p>
+                  <input class="form-control" [(ngModel)]="fileInput" 
+                  accept=".gif,.jpg,.jpeg,.png" type="file">
+                  <p>Change Profile Picture (only accepts images)</p>
                 </div>
               </div>
         </div>
@@ -18,57 +19,57 @@
                   <h5 class="card-title">Profile Details</h5>
                   <form action="" [formGroup]="form">
                     <div class="row">
-                        <div class="col-md-3">
+                        <div class="col-md-6">
                            
                             <div class="form-group">
                                 <label for="name" class="mx-2">Name</label>
-                                <input type="text" formControlName="name">
+                                <input type="text" class="form-control" formControlName="name">
                             </div>
 
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label for="lastName" class="mx-2">Last Name</label>
-                                <input  type="text" formControlName="lastName">
+                                <input  type="text" class="form-control" formControlName="lastName">
                             </div>
                         </div>
                         </div>   
                         <div class="row">
-                            <div class="col-md-3">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="adress" class="mx-2">Adress</label>
-                                    <input type="text" formControlName="adress">
+                                    <input type="text" class="form-control" formControlName="adress">
                                 </div>
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="adressOptional" class="mx-2"></label>
-                                    <input type="text" formControlName="adressOptional">
+                                    <input type="text" class="form-control" formControlName="adressOptional">
                                 </div>
                             </div>
                         </div> 
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="country" class="mx-2">Country</label>
-                                    <input type="text" formControlName="country">
+                                    <input type="text" class="form-control" formControlName="country">
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="city" class="mx-2">City</label>
-                                    <input type="text" formControlName="city">
+                                    <input type="text" class="form-control" formControlName="city">
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="post" class="mx-2">Postal Code</label>
-                                    <input type="text" formControlName="post">
+                                    <input type="text" class="form-control" formControlName="post">
                                 </div>
                             </div>
                             <br>
-                            <button class="btn btn-secondary">Save</button>
+                            <button class="btn btn-secondary" (click)="this.saveData()">Save</button>
                         
                     
                   </form>

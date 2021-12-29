@@ -8,7 +8,8 @@ import { GameListComponent } from './components/game-list/game-list.component';
 import { LoginPageComponent } from './components/auth/login-page/login-page.component';
 import { ProfileComponent } from './components/auth/profile/profile.component';
 import { AuthGuard } from './components/auth/guards/auth-guard.guard';
-
+import { RegisterPageComponent } from './components/auth/register-page/register-page.component';
+import { PaymentComponent } from './components/payment/payment.component';
 
 const routes: Routes = [
   {path: "", component: GameListComponent},
@@ -17,7 +18,9 @@ const routes: Routes = [
   {path: "cart", component: CartComponent},
   {path: "checkout", component: CheckoutComponent},
   {path: "login", component: LoginPageComponent},
-  {path: "profile", component: ProfileComponent, canActivate: [AuthGuard]}
+  {path: "profile", component: ProfileComponent, canActivate: [AuthGuard]},
+  {path: "register", component: RegisterPageComponent},
+  {path: "payment", component:PaymentComponent}
 ];
 
 @NgModule({

@@ -1,11 +1,62 @@
 <div class="container">
     <h1>Please fill up the form:</h1>
-    <form [formGroup]="form" class="py-5" (submit)="send()">
+    <form [formGroup]="form" class="py-5" (submit)="register()">
         <div class="row">
-            <div class="col-md-12 pb-4">
-                <button class="btn btn-secondary" (click)="autofillData()">Auto-Fill Form from Profile Details</button>
+
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input id="email" class="form-control" formControlName="email" type="email"
+                        [class.is-invalid]="form.get('email')?.touched && form.get('email')?.errors">
+                    
+                        <div *ngIf="form.get('email')?.touched && form.get('email')?.hasError('required')"
+                        class="form-text text-danger">Email is required</div>
+
+                        <div *ngIf="form.get('email')?.touched && form.get('email')?.hasError('email')"
+                        class="form-text text-danger">Provide a valid Email</div>
+
+                        
+                </div>
             </div>
-            
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input id="password" class="form-control" formControlName="password" type="password"
+                        [class.is-invalid]="form.get('password')?.touched && form.get('password')?.errors">
+                    
+                        <div *ngIf="form.get('password')?.touched && form.get('password')?.hasError('required')"
+                        class="form-text text-danger">Password is required</div>
+
+                        <!-- <div *ngIf="form.get('password')?.touched && form.get('password')?.hasError('pattern')"
+                        class="form-text text-danger">Minimum eight characters, at least one uppercase letter, one lowercase letter and one number</div> -->
+
+                        <div *ngIf="form.get('email')?.touched && form.get('password')?.hasError('minlength')"
+                        class="form-text text-danger">Mininum password length is {{
+                        form.get('name')?.errors?.minlength.requiredLength}} characters
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password:</label>
+                    <input id="confirmPassword" class="form-control" formControlName="confirmPassword" type="password"
+                        [class.is-invalid]="form.get('confirmPassword')?.touched && form.get('confirmPassword')?.errors">
+                    
+                        <div *ngIf="form.get('confirmPassword')?.touched && form.get('confirmPassword')?.hasError('required')"
+                        class="form-text text-danger">Password is required</div>
+
+                        <!-- <div *ngIf="form.get('confirmPassword')?.touched && form.get('confirmPassword')?.hasError('pattern')"
+                        class="form-text text-danger">Minimum eight characters, at least one uppercase letter, one lowercase letter and one number</div> -->
+
+                        <div *ngIf="form.get('confirmPassword')?.touched && form.hasError('invalidPassMatch')"
+                        class="form-text text-danger">Passwords must match
+                    </div>
+                </div>
+            </div>
+
+
             <div class="col-md-6">
                 <div class="form-Group">
                     <label for="nameInput">First Name:</label>
@@ -32,13 +83,13 @@
                     <input id="lastInput" class="form-control" formControlName="lastName" type="text"
                         [class.is-invalid]="form.get('lastName')?.touched && form.get('name')?.errors">
                     <div *ngIf="form.get('lastName')?.touched && form.get('lastName')?.hasError('required')"
-                        class="form-text text-danger">Name is required</div>
+                        class="form-text text-danger">Last name is required</div>
                     <div *ngIf="form.get('lastName')?.touched && form.get('lastName')?.hasError('minlength')"
-                        class="form-text text-danger">Name min length is {{
+                        class="form-text text-danger">Last name min length is {{
                         form.get('lastName')?.errors?.minlength.requiredLength}}
                     </div>
                     <div *ngIf="form.get('lastName')?.touched && form.get('lastName')?.hasError('pattern')"
-                        class="form-text text-danger">Name must not have numbers or special characters.
+                        class="form-text text-danger">Last name must not have numbers or special characters.
                     </div>
                 </div>
             </div>
@@ -112,7 +163,7 @@
                 <button class="btn btn-secondary mx-2">
                     Go Back
                 </button>
-                <input type="submit" [disabled]="!form.valid" class="btn btn-secondary">
+                <input type="submit" [disabled]="!form.valid" class="btn btn-secondary" value="Register" (click)="this.register()">
                    
             
             </div>
