@@ -39,7 +39,7 @@ export class PaymentComponent implements OnInit {
 
       let order = {
         items: cart.items.map( item => {
-          return "Game ID: " + item.game.id + "|" + " qnt " + item.quantity + "|" + " Price: €" + item.game.price
+          return "Game ID: " + item.game.id + " |" + " qnt " + item.quantity + "|" + " Price: €" + item.game.price
         }),
         total: cart.totalPrice,
         adress: cart.adressInfo.adress,
