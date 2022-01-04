@@ -1,18 +1,7 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-5">
-            <div class="card" >
-                <img style="background: white;" [src]="fileInput" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">{{this.name}}</h5>
-                  
-                  <input class="form-control" [(ngModel)]="fileInput" 
-                  accept=".gif,.jpg,.jpeg,.png" type="file">
-                  <p>Change Profile Picture (only accepts images)</p>
-                </div>
-              </div>
-        </div>
-        <div class="col-md-7">
+        
+        <div class="col-md-12">
             <div class="card" >
                 
                 <div class="card-body">
@@ -77,6 +66,60 @@
                   
                 </div>
               </div>
+        </div>
+
+        <div class="col-md-12" *ngIf="this.orders.length > 0" >
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="title">
+                        Your Orders:
+                    </h5>
+                    <div class="col-md-12" *ngFor="let order of this.orders">
+                        <div class="date">
+                            <b>Order Date:</b> {{order.date}}
+                        </div>
+                        <div class="id">
+                            <b>Order ID:</b> {{order.id}}
+                        </div>
+                        <div class="Name">
+                           <b>Name:</b> {{order.name}}
+                        </div>
+                        <div class="lastName">
+                           <b>Last Name:</b> {{order.lastName}}
+                        </div>
+                        <div class="email">
+                           <b>Email:</b> {{order.email}}
+                        </div>
+                        <div class="cardName">
+                           <b>Name on Card:</b> {{order.cardName}}
+                        </div>
+                        <div class="cardNumber">
+                           <b>Card Number:</b> {{order.cardNumber}}
+                        </div>
+                        <div class="adress">
+                           <b>Adress:</b> {{order.adress}}
+                        </div>
+                        <div class="adressOptional">
+                           <b>Adress Additional:</b> {{order.adressOptional}}
+                        </div>
+                        <div class="city">
+                           <b>City:</b> {{order.city}}
+                        </div>
+                        <div class="country">
+                           <b>Country:</b> {{order.country}}
+                        </div>
+                        <div class="items">
+                            <b>Items (ID, Quantity, Price):</b><br><span class="item" *ngFor="let item of order.items">{{item}}<br>
+                           </span>
+                        </div>
+                        <div class="total">
+                            <b>Total:</b>{{ order.total | currency : 'EUR' : true : '1.2-2'}}
+                        </div>
+                        <br>
+                        <hr>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

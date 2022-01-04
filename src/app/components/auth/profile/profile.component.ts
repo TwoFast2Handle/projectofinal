@@ -1,8 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { discardPeriodicTasks } from '@angular/core/testing';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
@@ -15,7 +13,8 @@ export class ProfileComponent implements OnInit {
   user : any
   name: string
   @Input() fileInput : any
-  email: string
+  email: any
+  orders: Array<any>
 
   form: FormGroup = this.fb.group({
     name: [null, [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z ]*')]],
@@ -32,15 +31,14 @@ export class ProfileComponent implements OnInit {
     this.name = "Name"
     this.fileInput = null
     this.email = ""
+    this.orders = []
   }
 
   ngOnInit(): void {
-    
     this.getData()
   }
 
   saveData() {
-    console.log("call save")
     let users = this.db.collection('users')
     users.doc(this.email).set(this.form.value)
   }
@@ -52,7 +50,6 @@ export class ProfileComponent implements OnInit {
         let email = res?.email?.valueOf()
         let users = this.db.collection('users')
         users.doc(email).get().subscribe( doc => {
-          console.log(doc.data())
           let data : any = doc.data()
           this.form.setValue({
             name : data.name,
@@ -63,17 +60,33 @@ export class ProfileComponent implements OnInit {
             city: data.city,
             post: data.post
           })
-          this.email = data.email
+          this.email = email
           this.name = data.name
+          this.getOrders(this.email)
         })
-      
       }
-      
-      
     })
     
+    
+    
+    
+
     // let {name, lastName, adress, adressOptional, country, city, post} = users.doc(this.LoginService.getUserLogged
     //this.form.patchValue({name : "hello"}) P@ssw0rd
+  }
+
+  getOrders(email : any) {
+    this.db.collection("orders", ref => {
+      let query = ref.where('email','==', email)
+      return query;
+    }).get().subscribe( querySnapshot => {
+      querySnapshot.forEach((doc) => {
+        let order : any = doc.data();
+        order.id = doc.id
+        this.orders.push(order)
+        console.log(this.orders)
+      })
+    })
   }
 
 }

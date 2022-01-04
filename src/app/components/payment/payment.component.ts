@@ -39,7 +39,7 @@ export class PaymentComponent implements OnInit {
 
       let order = {
         items: cart.items.map( item => {
-          return "Game ID: " + item.game.id + "|" + " qnt " + item.quantity + "|" + " Price: " + item.game.price
+          return "Game ID: " + item.game.id + "|" + " qnt " + item.quantity + "|" + " Price: €" + item.game.price
         }),
         total: cart.totalPrice,
         adress: cart.adressInfo.adress,
@@ -52,7 +52,8 @@ export class PaymentComponent implements OnInit {
         discount: cart.adressInfo.discount ?? 0,
         email: email,
         cardName: cart.paymentInfo.cardName,
-        cardNumber: cart.paymentInfo.cardNumber
+        cardNumber: cart.paymentInfo.cardNumber,
+        date: new Date().toLocaleDateString("pt-PT")
       }
 
       orders.add(order).then( docRef => {

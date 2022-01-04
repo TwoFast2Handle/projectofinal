@@ -19,10 +19,11 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginPageComponent } from './components/auth/login-page/login-page.component';
 import { AngularFireModule } from '@angular/fire/compat';
-import { AngularFirestoreModule } from "@angular/fire/compat/firestore";
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreCollectionGroup, AngularFirestoreModule } from "@angular/fire/compat/firestore";
 import { ProfileComponent } from './components/auth/profile/profile.component';
 import { RegisterPageComponent } from './components/auth/register-page/register-page.component';
 import { PaymentComponent } from './components/payment/payment.component';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
 
 
@@ -64,7 +65,7 @@ const firebaseConfig = {
     ReactiveFormsModule, AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule
   ],
-  providers: [CartComponent,AngularFirestoreModule ],
+  providers: [CartComponent, AngularFirestoreModule ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
